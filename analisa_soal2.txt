@@ -1,0 +1,92 @@
+1. Perbandingan Hasil Visual & Nilai Piksel Rata-Rata
+a. Low Pass Filter (LPF)
+
+Efek visual:
+
+Gambar menjadi lebih blur / halus.
+
+Detail dan tepi berkurang.
+
+Noise kecil ikut hilang.
+
+Nilai piksel rata-rata:
+
+Biasanya sedikit meningkat, karena proses perataan piksel (averaging).
+
+LPF meratakan nilai intensitas sehingga perbedaan gelap–terang mengecil.
+
+b. High Pass Filter (HPF)
+
+Efek visual:
+
+Gambar menjadi sangat tajam di bagian tepi.
+
+Area datar (background) menjadi gelap.
+
+Hasil terlihat kontras pada garis / edge.
+
+Nilai piksel rata-rata:
+
+Mendekati 0, atau jauh lebih rendah daripada gambar asli.
+
+HPF menonjolkan perubahan cepat piksel sehingga area konstan → bernilai rendah.
+
+c. Band Pass Filter (BPF)
+
+Efek visual:
+
+Gambar tampak lebih tajam daripada asli, tetapi tidak se-ekstrim HPF.
+
+Detail tertentu muncul lebih jelas.
+
+Sebagian blur bertahan, sebagian edge muncul.
+
+Nilai piksel rata-rata:
+
+Biasanya berada di tengah antara LPF dan HPF.
+
+Karena BPF melewatkan frekuensi menengah (tidak terlalu halus, tidak terlalu tajam).
+
+Kesimpulan rata-rata piksel:
+Filter	Visual	Rata-Rata Piksel
+LPF	Blur, noise hilang	Cenderung lebih tinggi
+HPF	Tepi tajam, background gelap	Sangat rendah
+BPF	Sharpening sedang	Sedang
+2. Hubungan Domain Spasial vs Domain Frekuensi
+
+Ketiga filter (LPF, HPF, BPF) bisa dijelaskan dari dua sisi:
+
+A. Domain Spasial (Kernel / Convolution)
+
+Di domain spasial:
+
+LPF = kernel rata-rata → meratakan piksel tetangga.
+
+HPF = kernel edge detection → mencari perbedaan antar piksel.
+
+BPF = kombinasi nilai negatif & positif → menahan frekuensi menengah.
+
+Konvolusi = operasi langsung pada piksel gambar.
+
+B. Domain Frekuensi (FFT)
+
+Jika kita ubah gambar ke frekuensi:
+
+LPF → melewatkan frekuensi rendah (informasi halus), memotong frekuensi tinggi (detail & edge).
+→ Hasil blur.
+
+HPF → membuang frekuensi rendah, melewatkan frekuensi tinggi.
+→ Hasil edge/informasi tajam.
+
+BPF → membuang frekuensi rendah & tinggi, melewatkan frekuensi menengah.
+→ Detail sedang ditonjolkan.
+
+Keterkaitan Utama
+
+Filter spasial sebenarnya adalah representasi langsung dari filter frekuensi.
+
+Kernel LPF = bentuk pendekatan dari ideal low-pass pada FFT.
+
+Kernel HPF = bentuk spasial dari high-pass yang menonjolkan perubahan cepat.
+
+Kernel BPF = kombinasi high-pass + low-pass → menghasilkan band-pass.Analisa soal no2
