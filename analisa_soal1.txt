@@ -1,0 +1,44 @@
+Analisa Perbedaan Persebaran Nilai Keabuan dan Transformasi Logaritmik vs Negatif
+==================================================================
+
+1. Perbedaan Persebaran Nilai Keabuan pada Tiga Citra
+
+a. Citra Asli (Original)
+- Nilai keabuan berasal langsung dari gambar grayscale.
+- Bagian terang memiliki nilai intensitas tinggi, sedangkan bagian gelap memiliki nilai intensitas rendah.
+- Histogram mengikuti kondisi natural gambar; tidak selalu merata dan sering condong ke sisi tertentu (gelap atau terang).
+- Persebaran intensitas mencerminkan kondisi asli gambar.
+
+b. Citra Negatif (G = 255 – F)
+- Transformasi negatif membalik seluruh nilai keabuan.
+- Piksel gelap menjadi terang, dan piksel terang menjadi gelap.
+- Histogram citra negatif merupakan cerminan horizontal dari histogram citra asli.
+- Distribusi intensitas tidak berubah, hanya orientasinya yang terbalik.
+- Digunakan untuk menonjolkan detail pada area gelap atau pada citra medis seperti X-Ray.
+
+c. Citra Logaritmik (G = c × log(1 + F))
+- Transformasi logaritmik memperluas nilai intensitas kecil (area gelap) dan memampatkan nilai intensitas besar (area terang).
+- Detail pada area gelap menjadi lebih terlihat.
+- Histogram menjadi lebih rata, karena nilai kecil dinaikkan, sedangkan nilai besar ditekan.
+- Cocok digunakan pada gambar dengan rentang dinamis tinggi.
+
+Ringkasan Perbedaan Persebaran Nilai Keabuan:
+- Citra Asli: intensitas apa adanya.
+- Negatif: distribusi dibalik.
+- Logaritmik: area gelap diperkuat, area terang diperkecil—histogram lebih merata.
+
+2. Kapan Transformasi Logaritmik Lebih Bermanfaat daripada Negatif?
+
+Transformasi Logaritmik lebih bermanfaat ketika:
+- Gambar terlalu gelap dan detail pada area gelap kurang terlihat.
+- Gambar memiliki rentang dinamis tinggi (kombinasi area sangat gelap dan sangat terang).
+- Untuk visualisasi spektrum frekuensi (FFT), karena magnitude frekuensi sering sangat besar.
+- Pada citra medis, astronomi, dan citra satelit untuk menonjolkan objek berintensitas rendah.
+
+Transformasi Negatif lebih cocok ketika:
+- Membutuhkan pembalikan kontras sederhana.
+- Analisis objek terang pada background gelap, atau sebaliknya.
+- Analisis struktur seperti radiologi, yang membutuhkan pembalikan terang–gelap.
+
+Kesimpulan:
+Transformasi negatif hanya membalik nilai intensitas, sedangkan transformasi logaritmik mengubah distribusi intensitas untuk meningkatkan detail area gelap dan menurunkan intensitas area terang.
